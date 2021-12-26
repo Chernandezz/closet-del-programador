@@ -28,7 +28,7 @@
 
       <div class="iconos">
         <div id="btn-buscar" class="fas fa-search"></div>
-        <a href="/admin" class="fas fa-user"></a>
+        <a href="../../login.php" class="fas fa-user"></a>
         <a href="#" class="fas fa-shopping-cart"></a>
         <div id="btn-menu" class="fas fa-bars"></div>
       </div>

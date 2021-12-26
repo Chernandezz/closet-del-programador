@@ -1,10 +1,17 @@
 <?php
 
+require 'includes/funciones.php';
+if (estaAutenticado()) {
+    header('Location: /admin');
+}
+
 require 'includes/config/database.php';
 $db = conectarDB();
 // Autenticar el usuario
 
 $errores = [];
+
+$email = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -37,9 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Llenar el arreglo de la sesion
                 $_SESSION['usuario'] = $usuario['email'];
                 $_SESSION['login'] = true;
-                echo "<pre>";
-                var_dump($_SESSION);
-                echo "</pre>";
+                header('Location: /admin');
             } else {
                 // Contraseña incorrecta
                 $errores = ['Contraseña Incorrecta'];
@@ -51,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Incluimos el header que tenemos predefinido en la carpeta includes {
-require 'includes/funciones.php';
 
 incluirTemplate("header");
 ?>

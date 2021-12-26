@@ -11,7 +11,7 @@ function estaAutenticado(): bool
 {
     session_start();
 
-    $auth = $_SESSION['login'];
+    $auth = $_SESSION['login'] ?? null;
     if ($auth) {
         return true;
     }
