@@ -59,7 +59,7 @@ incluirTemplate("header");
         <diSv class="lista-botones">
 
             <a class="boton boton-claro" href="/admin/propiedades/crear.php" >Nuevo Producto</a>
-            <a class="boton boton-claro" href="#" >Cerrar Sesión</a>
+            <a class="boton boton-claro" href="../cerrar_sesion.php" >Cerrar Sesión</a>
         </diSv>
 
         <table class="tabla-productos">
