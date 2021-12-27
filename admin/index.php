@@ -93,6 +93,8 @@ incluirTemplate("header");
             </tbody>
         </table>
     </main>
-</body>
-<?php mysqli_close($db);?>
-</html>
+<?php
+mysqli_close($db);
+incluirTemplate("footer");
+
+?>

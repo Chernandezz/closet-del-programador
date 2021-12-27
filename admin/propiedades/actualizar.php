@@ -135,5 +135,4 @@ incluirTemplate("header");
         <input type="submit" value="Actualizar Producto" class="boton boton-crear">
     </form>
 </main>
-</body>
-</html>
+<?php incluirTemplate("footer");

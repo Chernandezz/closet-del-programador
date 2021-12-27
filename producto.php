@@ -28,5 +28,4 @@ incluirTemplate("header");
         <a href="#" class="boton boton-crear">comprar</a>
     </div>
 </div>
-</body>
-</html>
+<?php incluirTemplate("footer");

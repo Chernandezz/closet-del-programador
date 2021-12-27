@@ -79,5 +79,5 @@ incluirTemplate("header");
         <input type="submit" value="Ingresar" class="boton boton-crear">
     </form>
 </main>
-</body>
-</html>
+<?php incluirTemplate("footer");
+

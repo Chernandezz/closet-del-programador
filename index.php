@@ -28,7 +28,4 @@ incluirTemplate("header");
       <?php endwhile;?>
     </div>
 
-    <!-- Link JS -->
-    <script src="script/script.js"></script>
-  </body>
-</html>
+<?php incluirTemplate("footer");?>
