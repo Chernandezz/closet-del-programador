@@ -16,14 +16,12 @@ $errores = [];
 $titulo = "";
 $precio = "";
 $descripcion = "";
-$cantidad = "";
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
     $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
     $precio = mysqli_real_escape_string($db, $_POST['precio']);
     $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']);
-    $cantidad = mysqli_real_escape_string($db, $_POST['cantidad']);
 
     // Asignar super globlar $_FILES a una variable
     $imagen = $_FILES['imagen'];
@@ -34,19 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     if (!$precio) {
         $errores[] = 'el precio es requerido';
     }
-    if (!$cantidad) {
-        $errores[] = 'la cantidad es requerida';
-    }
 
     // Validacion Imagen
     if (!$imagen['name'] || $imagen['error']) {
         $errores[] = 'la imagen es requerida';
-    }
-
-    // Validamos el tamaño de la imagen
-    $tam = 3000 * 1000; // Igual a 3MB
-    if ($imagen['size'] > $tam) {
-        $errores[] = 'La imagen es muy pesada';
     }
 
     //  Revisar que el arreglo de errores este vacio
@@ -69,7 +58,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
 
         // Insertar en la base de datos
-        $query = "INSERT INTO producto (titulo, precio, imagen, descripcion, cantidad) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$cantidad');";
+        $query = "INSERT INTO producto (titulo, precio, imagen, descripcion) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion');";
+
+        echo $query;
 
         $resultado = mysqli_query($db, $query);
 
@@ -108,9 +99,6 @@ incluirTemplate("header");
 
             <label for="descripcion">descripcion</label>
             <textarea name="descripcion" id="descripcion" placeholder="Agregue una descripcion del producto.."><?php echo $descripcion ?></textarea>
-
-            <label for="cantidad">cantidad</label>
-            <input type="number" name="cantidad" id="cantidad" placeholder="Cantidad disponible" min='1' value="<?php echo $cantidad ?>">
 
             <label for="imagen">imagen</label>
             <input type="file" name="imagen" id="imagen" accept="image/jpeg, image/png">
