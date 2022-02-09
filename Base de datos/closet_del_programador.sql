@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2022 a las 23:40:06
+-- Tiempo de generación: 09-02-2022 a las 23:58:46
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.1
 
@@ -34,6 +34,16 @@ CREATE TABLE `producto` (
   `imagen` varchar(200) DEFAULT NULL,
   `descripcion` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id`, `titulo`, `precio`, `imagen`, `descripcion`) VALUES
+(2, 'JS', '45000.00', 'eda37ab184eb1104dec1a1d8cb093e74.png', 'Animate la vida'),
+(3, 'SASS', '35000.00', 'e649abdeb9bce5cd0dbd337201bcc83a.png', 'Dale un poco de estilo a tu vida'),
+(4, 'HTML', '75000.00', 'dfdbd2a629dcd678d1f37804c02c720d.png', 'Dale estructura a tu vida'),
+(5, 'GIT HUB', '45000.00', '6dc5e01c4c88edd158dd15c437f4422f.png', 'Manten el control de las cosas');
 
 -- --------------------------------------------------------
 
@@ -77,7 +87,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
