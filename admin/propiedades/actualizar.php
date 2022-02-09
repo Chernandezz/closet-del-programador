@@ -30,7 +30,6 @@ $errores = [];
 $titulo = $item['titulo'];
 $precio = $item['precio'];
 $descripcion = $item['descripcion'];
-$cantidad = $item['cantidad'];
 $nombreImagen = $item['imagen'];
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
@@ -38,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
     $precio = mysqli_real_escape_string($db, $_POST['precio']);
     $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']);
-    $cantidad = mysqli_real_escape_string($db, $_POST['cantidad']);
 
     // Asignar super globlar $_FILES a una variable
     $imagen = $_FILES['imagen'];
@@ -48,15 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     }
     if (!$precio) {
         $errores[] = 'el precio es requerido';
-    }
-    if (!$cantidad) {
-        $errores[] = 'la cantidad es requerida';
-    }
-
-    // Validamos el tamaño de la imagen
-    $tam = 3000 * 1000; // Igual a 3MB
-    if ($imagen['size'] > $tam) {
-        $errores[] = 'La imagen es muy pesada';
     }
 
     //  Revisar que el arreglo de errores este vacio
@@ -83,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
 
         // Insertar en la base de datos
-        $query = "UPDATE producto SET titulo = '${titulo}', precio = ${precio}, imagen = '${nombreImagen}', descripcion = '${descripcion}', cantidad = ${cantidad} WHERE id = ${id}";
+        $query = "UPDATE producto SET titulo = '${titulo}', precio = ${precio}, imagen = '${nombreImagen}', descripcion = '${descripcion}' WHERE id = ${id}";
 
         $resultado = mysqli_query($db, $query);
 
@@ -122,9 +111,6 @@ incluirTemplate("header");
 
             <label for="descripcion">descripcion</label>
             <textarea name="descripcion" id="descripcion" placeholder="Agregue una descripcion del producto.."><?php echo $descripcion ?></textarea>
-
-            <label for="cantidad">cantidad</label>
-            <input type="number" name="cantidad" id="cantidad" placeholder="Cantidad disponible" min='1' value="<?php echo $cantidad ?>">
 
             <label for="imagen">imagen</label>
             <div class="admin-imagenes">
